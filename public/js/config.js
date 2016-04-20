@@ -9,6 +9,10 @@ var images = [
 var timeBetweenImages = 30000;
 var timeFromClickToPreferdView = 60000;
 
+var lastWeather = {
+	city: "",
+	weather: {}
+};
 
 var config = (function(){
 	var currentView,

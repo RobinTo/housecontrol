@@ -5,7 +5,7 @@ var frontpage = (function(){
 	function init(){
 		config.loadSettings();
 		_goToHousecontrol();
-		_getWeather();
+		_getWeather("Farsund");
 		_getMotd();
 		_bindEvents();
 	}
@@ -99,8 +99,8 @@ var frontpage = (function(){
 		});
 	}
 
-	function _getWeather(){
-		var weatherUrl = "../weather?city=Farsund";
+	function _getWeather(city){
+		var weatherUrl = "../weather?city=" + city;
 
 		utils.ajaxGet(weatherUrl, function(response){
 			var responseObject = JSON.parse(response);
@@ -112,8 +112,12 @@ var frontpage = (function(){
 				return;
 			}
 
-			var weather = responseObject.weather;
+			// As defined in config.js
+			// For a more detailed view.
+			lastWeather.city = city;
+			lastWeather.weather = responseObject;
 
+			var weather = responseObject.weather;
 
 			var iconToSet = weatherCodeToIcon[weather[0].id];
 					weatherDesc = weatherCodeToDesc[weather[0].id];
