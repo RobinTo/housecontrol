@@ -1,0 +1,81 @@
+<html>
+
+<head>
+	<script src="./js/utils.js"></script>
+	<script src="./js/config.js"></script>
+	<script src="./js/images.js"></script>
+	<script src="./js/housecontrol.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/checkbox.css">
+</head>
+<body>
+<div id="frontpage" class="containerDiv">
+	<div class="routeDiv3 upperLeft height2">
+		Upper left - Vær
+	</div>
+	<div id="temperature" class="routeDiv3 upperMid height2">
+		56&deg;
+	</div>
+	<div id="outletControls" class="routeDiv3 upperRight height2">
+		<div class="routeDiv1 height3">
+			<div id="outlet1On" class="routeDiv2 height1">
+				On outlet 1
+			</div>
+			<div id="outlet1Off" class="routeDiv2 height1 active">
+				Off outlet 1
+			</div>
+		</div>
+		<div class="routeDiv1 height3">
+			<div id="outlet2On" class="routeDiv2 height1">
+				On outlet 2
+			</div>
+			<div id="outlet2Off" class="routeDiv2 height1 active">
+				Off outlet 2
+			</div>
+		</div>
+		<div class="routeDiv1 height3">
+			<div id="outlet3On" class="routeDiv2 height1 active">
+				On outlet 3
+			</div>
+			<div id="outlet3Off" class="routeDiv2 height1">
+				Off outlet 3
+			</div>
+		</div>
+	</div>
+	<div class="routeDiv3 lowerLeft height2">
+		Lower left - Tekst/bilde hentet fra api på pythonanywhere som kan endres?
+	</div>
+	<div class="routeDiv3 lowerMid height2">
+		Lower mid - 
+	</div>
+	<!-- NAVIGATON -->
+	<div class="routeDiv3 lowerRight height2">
+		<!-- Row 1 -->
+		<div class="routeDiv3 height2">
+		</div>
+		<div class="routeDiv3 height2">
+		</div>
+		<div class="routeDiv3 height2">
+		</div>
+		<!-- Row 2 -->
+		<div class="routeDiv3 height2">
+			<img src="./resources/imageIcon.png" class="settings" />
+		</div>
+		<div class="routeDiv3 height2">
+			<img src="./resources/settingsIcon.png" class="settings" />
+		</div>
+		<div class="routeDiv3 height2">
+			<img src="./resources/powerIcon.png" class="settings" />
+		</div>
+	</div>
+	<!-- END NAVIGATION -->
+</div>
+<div id="imagediv" class="containerDiv">
+	<img id="image" class="displayImage" src="./images/placeholder/placeholder.jpg" />
+</div>
+<div id="calendardiv" class="containerDiv">
+
+</div>
+</body>
+
+</html>
