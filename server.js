@@ -1,7 +1,9 @@
 var express = require('express');
 var app = express();
+var request = require('request');
 const spawn = require('child_process').spawn;
 var fs = require('fs');
+var secrets = require('./secrets.js');
 
 app.use('/static', express.static('public'));
 
@@ -20,6 +22,17 @@ app.get('/imagelist', function(req, res){
 			res.json(files);
 		}
 	});
+});
+
+app.get('/weather', function(req, res){
+  request.get('http://api.openweathermap.org/data/2.5/weather?q=Farsund&units=metric&appid=' + secrets.weatherApiKey, function(err, response, body){
+    if(!err && response.statusCode === 200){
+      var weather = JSON.parse(body);
+      res.json(weather);
+    } else {
+      res.json({error: "Kunne ikke hente været, er jeg koblet til internett?"});
+    }
+  });
 });
 
 app.get('/nodev', function(req, res){
@@ -45,5 +58,3 @@ var server = app.listen(8081, function () {
   console.log("Example app listening at http://%s:%s", host, port)
 
 });
-
-

@@ -5,13 +5,16 @@
 	<script src="./js/config.js"></script>
 	<script src="./js/images.js"></script>
 	<script src="./js/housecontrol.js"></script>
+	<link rel="stylesheet" type="text/css" href="./resources/weathericons/css/weather-icons.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<link rel="stylesheet" type="text/css" href="./css/checkbox.css">
 </head>
 <body>
 <div id="frontpage" class="containerDiv">
-	<div class="routeDiv3 upperLeft height2">
-		Upper left - Vær
+	<div id="weather" class="routeDiv3 upperLeft height2">
+		<i id="weatherIcon" class="wi wi-day-sunny"></i>
+		<div id="weatherTemperature"></div>
+		<div id="weatherDescription"></div>
 	</div>
 	<div id="temperature" class="routeDiv3 upperMid height2">
 		56&deg;
@@ -46,7 +49,7 @@
 		Lower left - Tekst/bilde hentet fra api på pythonanywhere som kan endres?
 	</div>
 	<div class="routeDiv3 lowerMid height2">
-		Lower mid - 
+		Lower mid -
 	</div>
 	<!-- NAVIGATON -->
 	<div class="routeDiv3 lowerRight height2">

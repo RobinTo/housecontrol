@@ -12,7 +12,7 @@ var timeFromClickToPreferdView = 60000;
 
 var config = (function(){
 	var currentView,
-		preferedView = VIEWS.IMAGES;
+		preferedView = VIEWS.FRONT;
 
 	function loadSettings() {
 

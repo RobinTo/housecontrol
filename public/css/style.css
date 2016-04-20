@@ -99,6 +99,21 @@ img {
 	text-align: center;
 }
 
+#weather {
+	padding-top: 30px;
+	color: darkgray;
+}
+
+#weatherIcon {
+	font-size: 100px;
+}
+#weatherDescription{
+	font-size: 30px;
+}
+#weatherTemperature{
+	font-size: 40px;
+}
+
 #temperature{
 	padding-top: 30px;
 	font-size: 175px;
