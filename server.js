@@ -25,16 +25,29 @@ app.get('/imagelist', function(req, res){
 });
 
 app.get('/weather', function(req, res){
-  request.get('http://api.openweathermap.org/data/2.5/weather?q=Farsund&units=metric&appid=' + secrets.weatherApiKey, function(err, response, body){
+  request.get('http://api.openweathermap.org/data/2.5/weather?q='+req.query.city+'&units=metric&appid=' + secrets.weatherApiKey, function(err, response, body){
     if(!err && response.statusCode === 200){
       var weather = JSON.parse(body);
       res.json(weather);
     } else {
-      res.json({error: "Kunne ikke hente været, er jeg koblet til internett?"});
+      res.json({error: "Kunne ikke hente været for " + req.query.city + "."});
     }
   });
 });
 
+app.get('/motd', function(req, res){
+  request.get('http://robint.pythonanywhere.com/api/motd/', function(err, response, body){
+    if(!err && response.statusCode === 200){
+      var motd = JSON.parse(body);
+      res.json(motd);
+    } else {
+      res.json({error: "Kunne ikke hente melding."});
+    }
+  });
+});
+
+// This spawns a console with the commands listed.
+// Use this to trigger on or off for outlets.
 app.get('/nodev', function(req, res){
 	var ls = spawn('node', ['-v']);
 

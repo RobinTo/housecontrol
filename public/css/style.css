@@ -119,3 +119,11 @@ img {
 	font-size: 175px;
 	color: darkgray;
 }
+
+#motd{
+	padding-top: 30px;
+}
+
+#motdText{
+	font-size: 20px;
+}
