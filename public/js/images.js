@@ -5,7 +5,7 @@ var imageController = (function(){
 
 	function goToImages(){
 		document.getElementById("imagediv").style.display = "block";
-		document.getElementById("calendardiv").style.display = "none";
+		document.getElementById("settingsdiv").style.display = "none";
 		document.getElementById("frontpage").style.display = "none";
 		config.setCurrentView(VIEWS.IMAGES);
 		_startImageTimeout();

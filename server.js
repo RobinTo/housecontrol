@@ -5,6 +5,10 @@ const spawn = require('child_process').spawn;
 var fs = require('fs');
 var secrets = require('./secrets.js');
 
+var rfOutlets = [];
+
+readOutlets();
+
 app.use('/static', express.static('public'));
 
 app.get('/', function (req, res) {
@@ -48,8 +52,15 @@ app.get('/motd', function(req, res){
 
 // This spawns a console with the commands listed.
 // Use this to trigger on or off for outlets.
-app.get('/nodev', function(req, res){
-	var ls = spawn('node', ['-v']);
+app.get('/rfoutlet', function(req, res){
+  readOutlets(function(){
+    res.json(rfOutlets);
+  });
+});
+
+app.post('/rfoutlet/:code', function(req, res){
+  // Trigger a post rf code req.code
+  var ls = spawn('node', ['-v']);
 
 	ls.stdout.on('data', (data) => {
 	  console.log(`stdout: ${data}`);
@@ -64,6 +75,20 @@ app.get('/nodev', function(req, res){
 	});
 });
 
+app.put('/rfoutlet/:name/:on/:off/:toggle', function(req, res){
+  var newOutlet = {
+    name: req.params.name,
+    onCode: parseInt(req.params.on),
+    offCode: parseInt(req.params.off),
+    toggleCode: parseInt(req.params.toggle)
+  }
+  console.log("Trying to save");
+  console.log(req.params.name);
+  rfOutlets.push(newOutlet);
+  saveOutlets();
+  res.send("Saved outlet.");
+});
+
 var server = app.listen(8081, function () {
 
   var host = server.address().address
@@ -71,3 +96,22 @@ var server = app.listen(8081, function () {
   console.log("Example app listening at http://%s:%s", host, port)
 
 });
+
+
+function saveOutlets(){
+  fs.writeFile ('./outlets.txt', JSON.stringify(rfOutlets), function(err) {
+      if (err) throw err;
+      console.log('Wrote rf outlets to file');
+  });
+}
+
+function readOutlets(callback){
+  fs.readFile('./outlets.txt', 'utf8', function (err, data) {
+    if (err) throw err;
+    //Do your processing, MD5, send a satellite to the moon, etc.
+    rfOutlets = JSON.parse(data);
+    if(callback){
+      callback();
+    }
+  });
+}

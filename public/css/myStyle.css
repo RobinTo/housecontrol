@@ -1,0 +1,110 @@
+@font-face {
+  font-family: 'regular';
+  src: local('Roboto Regular'), local('Roboto-Regular'), url('../resources/fonts/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'robobold';
+  src: local('Roboto Bold'), local('Roboto-Bold'), url('../resources/fonts/Roboto-Bold.ttf') format('truetype');
+}
+body,
+html {
+  font-family: regular;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: black;
+}
+body div,
+html div {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body .containerDiv,
+html .containerDiv {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+#frontpage .card {
+  position: fixed;
+  width: 33.33%;
+  height: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+#frontpage .card#weather {
+  top: 0;
+  left: 0;
+  background: -webkit-linear-gradient(top, #1e5799 0%, #2989d8 50%, #7db9e8 100%);
+  background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #7db9e8 100%);
+  padding-top: 30px;
+  color: darkgray;
+}
+#frontpage .card#weather #weatherIcon {
+  font-size: 100px;
+  display: inline-block;
+}
+#frontpage .card#weather #weatherTemperature {
+  font-size: 40px;
+  padding-left: 8px;
+  display: inline-block;
+}
+#frontpage .card#weather #weatherDescription {
+  padding-top: 16px;
+  font-size: 30px;
+}
+#frontpage .card#temperature {
+  top: 0;
+  left: 33.33%;
+  background: -webkit-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%);
+  background: linear-gradient(to bottom, #a90329 0%, #8f0222 44%, #6d0019 100%);
+  padding-top: 30px;
+  color: darkgray;
+}
+#frontpage .card#temperature #currentTemperature {
+  font-size: 40px;
+}
+#frontpage .card#outletControls {
+  top: 0;
+  right: 0;
+  background: -webkit-linear-gradient(top, #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%);
+  background: linear-gradient(to bottom, #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%);
+}
+#frontpage .card#motd {
+  bottom: 0;
+  left: 0;
+  background: -webkit-linear-gradient(top, #fb83fa 0%, #e93cec 100%);
+  background: linear-gradient(to bottom, #fb83fa 0%, #e93cec 100%);
+  padding: 30px 20px;
+}
+#frontpage .card#motd #motdmessage {
+  font-size: 20px;
+}
+#frontpage .card#motd #motdAuthor {
+  font-size: 15px;
+}
+#frontpage .card#clock {
+  bottom: 0;
+  left: 33.33%;
+  background: -webkit-linear-gradient(top, #b3dced 0%, #29b8e5 50%, #bce0ee 100%);
+  background: linear-gradient(to bottom, #b3dced 0%, #29b8e5 50%, #bce0ee 100%);
+  padding-top: 60px;
+  font-size: 75px;
+  color: darkgray;
+}
+#frontpage .card#settings {
+  bottom: 0;
+  right: 0;
+  background: -webkit-linear-gradient(top, #ffb375 27%, #ff7400 100%);
+  background: linear-gradient(to bottom, #ffb375 27%, #ff7400 100%);
+}
+#imagediv img {
+  max-height: 100%;
+  max-width: 100%;
+}

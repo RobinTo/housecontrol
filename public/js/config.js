@@ -1,7 +1,7 @@
 var VIEWS = {
 	FRONT: "front",
 	IMAGES: "image",
-	CALENDAR: "calendar"
+	SETTINGS: "settings"
 };
 var images = [
 	"placeholder/placeholder.jpg"
