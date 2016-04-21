@@ -7,6 +7,7 @@ var frontpage = (function(){
 		_goToHousecontrol();
 		_getWeather("Farsund");
 		_getMotd();
+		_startTime();
 		_bindEvents();
 	}
 
@@ -91,11 +92,13 @@ var frontpage = (function(){
 			var motdObject = JSON.parse(response);
 
 			if(motdObject.error){
-				document.getElementById("motd").innerHTML = motdObject.error;
+				document.getElementById("motdMessage").innerHTML = motdObject.error;
+				document.getElementById("motdAuthor").innerHTML = "";
 				return;
 			}
 
-			document.getElementById("motd").innerHTML = motdObject.message;
+			document.getElementById("motdMessage").innerHTML = motdObject.message;
+			document.getElementById("motdAuthor").innerHTML = motdObject.author;
 		});
 	}
 
@@ -134,6 +137,22 @@ var frontpage = (function(){
 			document.getElementById("weatherDescription").innerHTML = weatherDesc;
 			document.getElementById("weatherTemperature").innerHTML = responseObject.main.temp.toFixed(0) + " grader";
 		});
+	}
+
+	function _startTime() {
+	    var today = new Date();
+	    var h = today.getHours();
+	    var m = today.getMinutes();
+	    var s = today.getSeconds();
+	    m = checkTime(m);
+	    s = checkTime(s);
+	    document.getElementById('clockText').innerHTML = h + ":" + m + ":" + s;
+	    var t = setTimeout(_startTime, 500);
+	}
+
+	function checkTime(i) {
+	    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+	    return i;
 	}
 
 	return {

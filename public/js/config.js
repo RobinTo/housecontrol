@@ -14,6 +14,22 @@ var lastWeather = {
 	weather: {}
 };
 
+var outlets = [
+		{
+			name: "Ruteren",
+			code: 16642
+		},
+		{
+			name: "Lyset",
+			code: 16642
+		},
+		{
+			name: "Outlet 3",
+			code: 16642
+		}
+];
+
+
 var config = (function(){
 	var currentView,
 		preferedView = VIEWS.FRONT;
