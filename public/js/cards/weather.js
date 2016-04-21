@@ -1,7 +1,8 @@
 var weather = (function(){
 
   var weatherTimeout,
-      myCity = "Farsund";
+      myCity = "Farsund",
+      latestWeatherResponse = {};
 
   function init(){
     _getWeather(myCity);
@@ -23,8 +24,8 @@ var weather = (function(){
 
 			// As defined in config.js
 			// For a more detailed view.
-			lastWeather.city = city;
-			lastWeather.weather = responseObject;
+			latestWeatherResponse.city = city;
+			latestWeatherResponse.weather = responseObject;
 
 			var weather = responseObject.weather;
 

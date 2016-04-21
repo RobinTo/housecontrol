@@ -3,53 +3,13 @@ var VIEWS = {
 	IMAGES: "image",
 	SETTINGS: "settings"
 };
-var images = [
-	"placeholder/placeholder.jpg"
-];
-var timeBetweenImages = 30000;
 var timeFromClickToPreferdView = 60000;
-
-var lastWeather = {
-	city: "",
-	weather: {}
-};
-
-var outlets = [
-		{
-			name: "Ruteren",
-			code: 16642
-		},
-		{
-			name: "Lyset",
-			code: 16642
-		},
-		{
-			name: "Outlet 3",
-			code: 16642
-		}
-];
 
 
 var config = (function(){
 	var currentView,
 		preferedView = VIEWS.FRONT;
-
-	function loadSettings() {
-
-		utils.ajaxGet('../imagelist', function(result){
-			if(!result.hasOwnProperty("error")){
-				var imageList = JSON.parse(result);
-				if(Array.isArray(imageList) && imageList.length > 0){
-					images = imageList;
-				}
-			}
-		});
-
-	}
-
 	return {
-		loadSettings: loadSettings,
-
 		setCurrentView : function(newView){
 			currentView = newView;
 		},
