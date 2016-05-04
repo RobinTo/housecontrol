@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "less": "lessc public/css/style.less public/css/myStyle.css",
+    "lessNormal": "lessc public/css/normal/normal.less public/css/normalStyle.css",
+    "lessDark": "lessc public/css/dark/dark.less public/css/darkStyle.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
