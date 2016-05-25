@@ -7,7 +7,7 @@ var images = [
 	"placeholder/placeholder.jpg"
 ];
 var timeBetweenImages = 30000;
-var timeFromClickToPreferdView = 60000;
+var timeFromClickToPreferdView = 5000;
 
 var lastWeather = {
 	city: "",
@@ -32,7 +32,7 @@ var outlets = [
 
 var config = (function(){
 	var currentView,
-		preferedView = VIEWS.FRONT;
+		preferedView = VIEWS.IMAGES;
 
 	function loadSettings() {
 
