@@ -15,6 +15,8 @@ var frontpage = (function(){
 		rfoutlets.init();
 
 		_bindEvents();
+
+		_onTap();
 	}
 
 	function _bindEvents(){

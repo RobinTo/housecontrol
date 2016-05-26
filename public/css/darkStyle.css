@@ -100,6 +100,17 @@ html .containerDiv {
   right: 0;
   background: darkgray;
 }
+#frontpage .card#settings .routeDiv3 {
+  width: 32.33%;
+}
+#frontpage .card#settings .height2 {
+  height: 50%;
+}
+#frontpage .card#settings .settingsButton {
+  display: inline-block;
+  box-sizing: border-box;
+  margin-top: 16px;
+}
 #imagediv img {
   max-height: 100%;
   max-width: 100%;

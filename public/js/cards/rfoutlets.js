@@ -28,6 +28,7 @@ var rfoutlets = (function(){
   }
 
   function _renderOutlets($card){
+    $card.empty();
     for(var i = 0; i < outlets.length; i++){
       $card.append('<div>' + outlets[i].name + '</div>');
     }
