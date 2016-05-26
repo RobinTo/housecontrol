@@ -17,8 +17,14 @@ var rfoutlets = (function(){
 
   function init(){
     // This should control the rf outlet switches.
-    var $card = $('#outletControls');
-    _renderOutlets($card);
+
+    $.get('/rfoutlet', function(response){
+      outlets = response;
+      console.log(outlets);
+    
+      var $card = $('#outletControls');
+      _renderOutlets($card);
+    });
   }
 
   function _renderOutlets($card){
