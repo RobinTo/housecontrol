@@ -40,6 +40,7 @@ var rfoutlets = (function(){
       return outlets;
     },
     addOutlet : function(name, onCode, offCode, toggleCode){
+      $.post('/rfoutlet/'+name+'/'+onCode+'/'+offCode+'/'+toggleCode);
       outlets.push(outlet(name, onCode, offCode, toggleCode));
     },
     removeOutlet : function(name){

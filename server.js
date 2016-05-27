@@ -89,6 +89,20 @@ app.put('/rfoutlet/:name/:on/:off/:toggle', function(req, res){
   res.send("Saved outlet.");
 });
 
+app.delete('/rfoutlet/:name', function(req, res){
+  var outletToDelete = req.params.name;
+  var deletedOutlets = 0;
+  for(var i = 0; i < rfOutlets.length; i++){
+    if(rfOutlets[i].name === outletToDelete){
+      rfOutlets.splice(i, 1);
+      deletedOutlets++;
+      i--;
+    }
+  }
+  saveOutlets();
+  res.send("Deleted " + deletedOutlets + " outlets named " + outletToDelete +".");
+});
+
 var server = app.listen(8081, function () {
 
   var host = server.address().address
