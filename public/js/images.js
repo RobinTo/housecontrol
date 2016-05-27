@@ -1,11 +1,30 @@
 var imageController = (function(){
 
-	var imageTimeout = null;
-	var currentImage = 0;
+	var imageTimeout = null,
+			timeBetweenImages = 30000;
+	var currentImage = 0,
+			images = [
+				"placeholder/placeholder.jpg"
+			];
+
+	function init(){
+		_loadImages();
+	}
+
+	function _loadImages(){
+		utils.ajaxGet('../imagelist', function(result){
+			if(!result.hasOwnProperty("error")){
+				var imageList = JSON.parse(result);
+				if(Array.isArray(imageList) && imageList.length > 0){
+					images = imageList;
+				}
+			}
+		});
+	}
 
 	function goToImages(){
 		document.getElementById("imagediv").style.display = "block";
-		document.getElementById("calendardiv").style.display = "none";
+		document.getElementById("settingsdiv").style.display = "none";
 		document.getElementById("frontpage").style.display = "none";
 		config.setCurrentView(VIEWS.IMAGES);
 		_startImageTimeout();
@@ -32,6 +51,7 @@ var imageController = (function(){
 	}
 
 	return {
+		init : init,
 		goToImages : goToImages
 	}
 })();

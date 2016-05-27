@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lessNormal": "lessc public/css/normal/normal.less public/css/normalStyle.css",
+    "lessDark": "lessc public/css/dark/dark.less public/css/darkStyle.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,5 +14,7 @@
     "express": "^4.13.4",
     "request": "^2.72.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "less": "^2.6.1"
+  }
 }

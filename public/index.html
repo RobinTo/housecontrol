@@ -1,13 +1,19 @@
 <html>
 
 <head>
+	<script src="./js/ext/jquery.js"></script> <!-- Version 2.2.3 -->
 	<script src="./js/utils.js"></script>
 	<script src="./js/config.js"></script>
 	<script src="./js/images.js"></script>
+	<script src="./js/cards/clock.js"></script>
+	<script src="./js/cards/inside.js"></script>
+	<script src="./js/cards/motd.js"></script>
+	<script src="./js/cards/rfoutlets.js"></script>
+	<script src="./js/cards/settings.js"></script>
+	<script src="./js/cards/weather.js"></script>
 	<script src="./js/housecontrol.js"></script>
 	<link rel="stylesheet" type="text/css" href="./resources/weathericons/css/weather-icons.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
-	<link rel="stylesheet" type="text/css" href="./css/checkbox.css">
+	<link rel="stylesheet" type="text/css" href="./css/normalStyle.css" id="theme_css">
 </head>
 <body>
 <div id="frontpage" class="containerDiv">
@@ -17,33 +23,10 @@
 		<div id="weatherDescription"></div>
 	</div>
 	<div id="temperature" class="card routeDiv3 upperMid height2">
-		56&deg;
+		<div id="currentTemperature">56&deg;</div>
 	</div>
 	<div id="outletControls" class="card routeDiv3 upperRight height2">
-		<div class="routeDiv1 height3">
-			<div id="outlet1On" class="routeDiv2 height1">
-				On outlet 1
-			</div>
-			<div id="outlet1Off" class="routeDiv2 height1 active">
-				Off outlet 1
-			</div>
-		</div>
-		<div class="routeDiv1 height3">
-			<div id="outlet2On" class="routeDiv2 height1">
-				On outlet 2
-			</div>
-			<div id="outlet2Off" class="routeDiv2 height1 active">
-				Off outlet 2
-			</div>
-		</div>
-		<div class="routeDiv1 height3">
-			<div id="outlet3On" class="routeDiv2 height1 active">
-				On outlet 3
-			</div>
-			<div id="outlet3Off" class="routeDiv2 height1">
-				Off outlet 3
-			</div>
-		</div>
+
 	</div>
 	<div id="motd" class="card routeDiv3 lowerLeft height2">
 		<div id="motdMessage"></div>
@@ -55,30 +38,32 @@
 	<!-- NAVIGATON -->
 	<div id="settings" class="card routeDiv3 lowerRight height2">
 		<!-- Row 1 -->
-		<div class="routeDiv3 height2">
+		<div class="routeDiv3 height2 settingsButton">
 		</div>
-		<div class="routeDiv3 height2">
+		<div class="routeDiv3 height2 settingsButton">
 		</div>
-		<div class="routeDiv3 height2">
+		<div class="routeDiv3 height2 settingsButton">
 		</div>
 		<!-- Row 2 -->
-		<div class="routeDiv3 height2">
+		<div class="routeDiv3 height2 settingsButton" id="imageSettingsButton">
 			<img src="./resources/imageIcon.png" class="settings" />
 		</div>
-		<div class="routeDiv3 height2">
+		<div class="routeDiv3 height2 settingsButton" id="settingsSettingsButton">
 			<img src="./resources/settingsIcon.png" class="settings" />
 		</div>
-		<div class="routeDiv3 height2">
+		<div class="routeDiv3 height2 settingsButton" id="powerSettingsButton">
 			<img src="./resources/powerIcon.png" class="settings" />
 		</div>
 	</div>
 	<!-- END NAVIGATION -->
 </div>
+
+
 <div id="imagediv" class="containerDiv">
 	<img id="image" class="displayImage" src="./images/placeholder/placeholder.jpg" />
 </div>
-<div id="calendardiv" class="containerDiv">
 
+<div id="settingsdiv" class="containerDiv">
 </div>
 </body>
 

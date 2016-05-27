@@ -26,7 +26,11 @@ var utils = (function(){
   }
 
   return {
-    ajaxGet : ajaxGet
+    ajaxGet : ajaxGet,
+
+    setCss : function(){
+      document.getElementById('theme_css').href = './css/darkStyle.css';
+    }
   };
 
 })();

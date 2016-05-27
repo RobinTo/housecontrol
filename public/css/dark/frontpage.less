@@ -1,0 +1,100 @@
+
+#frontpage{
+
+  .card{
+    position: fixed;
+    width: 33.33%;
+    height: 50%;
+    box-sizing: border-box;
+    display: inline-block;
+
+    &#weather{
+      top: 0;
+      left: 0;
+    	background: black;
+    	padding-top: 30px;
+    	color: white;
+
+      #weatherIcon{
+      	font-size: 100px;
+        display: inline-block;
+      }
+      #weatherTemperature{
+      	font-size: 40px;
+        padding-left: 8px;
+        display: inline-block;
+      }
+      #weatherDescription{
+        padding-top: 16px;
+      	font-size: 30px;
+      }
+
+    }
+
+    &#temperature{
+      top: 0;
+      left: 33.33%;
+    	background: black;
+    	padding-top: 30px;
+    	color: white;
+
+      #currentTemperature{
+      	font-size: 40px;
+      }
+    }
+
+    &#outletControls{
+      top: 0;
+      right: 0;
+    	background: black;
+      color: white;
+
+    }
+
+    &#motd{
+      bottom: 0;
+      left: 0;
+    	background: black;
+    	padding: 30px 20px;
+      color: white;
+      #motdmessage{
+      	font-size: 20px;
+      }
+      #motdAuthor{
+      	font-size: 15px;
+      }
+    }
+
+    &#clock{
+      bottom: 0;
+      left: 33.33%;
+    	background: black;
+    	padding-top: 60px;
+    	font-size: 75px;
+    	color: white;
+      #clockText{
+
+      }
+    }
+
+    &#settings{
+      bottom: 0;
+      right: 0;
+    	background: darkgray;
+      
+      .routeDiv3{
+        width: 32.33%;
+      }
+      .height2{
+        height: 50%;
+      }
+      .settingsButton{
+        display: inline-block;
+        box-sizing: border-box;
+        margin-top: 16px;
+      }
+    }
+
+  }
+
+}
