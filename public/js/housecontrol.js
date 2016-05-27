@@ -9,7 +9,6 @@ var frontpage = (function(){
 		_getMotd();
 		_startTime();
 		_bindEvents();
-		_onTap();
 	}
 
 	function _bindEvents(){
@@ -38,8 +37,6 @@ var frontpage = (function(){
 	function _onTap(){
 		clearTimeout(sleepTimeout);
 		sleepTimeout = setTimeout(function(){
-			console.log("on tap timeout");
-			console.log(config.getPreferedView());
 			switch(config.getPreferedView()){
 				case VIEWS.FRONT:
 					_goToHousecontrol();
