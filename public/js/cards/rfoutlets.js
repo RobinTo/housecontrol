@@ -15,14 +15,16 @@ var rfoutlets = (function(){
     outlet("Outlet three", 1561, 1621, null),
   ];
 
+  var $card;
+
   function init(){
     // This should control the rf outlet switches.
+    $card = $('#outletControls');
 
-    $.get('/rfoutlet', function(response){
+    _loadOutlets(function(response){
       outlets = response;
       console.log(outlets);
     
-      var $card = $('#outletControls');
       _renderOutlets($card);
     });
   }
@@ -34,24 +36,31 @@ var rfoutlets = (function(){
     }
   }
 
+  function _loadOutlets(callback){
+    $.get('/rfoutlet', callback(response));
+  }
+
   return {
     init: init,
     getOutlets : function(){
       return outlets;
     },
     addOutlet : function(name, onCode, offCode, toggleCode){
-      $.post('/rfoutlet/'+name+'/'+onCode+'/'+offCode+'/'+toggleCode);
-      outlets.push(outlet(name, onCode, offCode, toggleCode));
+      $.post('/rfoutlet/'+name+'/'+onCode+'/'+offCode+'/'+toggleCode).done(function(){
+        _loadOutlets(function(response){
+          outlets = response;
+          _renderOutlets($card);
+        });
+      });
     },
     removeOutlet : function(name){
-      var indexToRemove = null;
-      for(var i = 0; i < outlets.length; i++){
-        if(outlets[i].name === name){
-          indexToRemove = i;
-          break;
-        }
-      }
-      outlets.splice(indexToRemove, 1);
+      
+      $.delete('/rfoutlet/'+name).done(function(){
+        _loadOutlets(function(response){
+          outlets = response;
+          _renderOutlets($card);
+        });
+      });
     }
   }
 })();
