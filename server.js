@@ -125,21 +125,35 @@ function saveOutlets(){
 }
 
 function readOutlets(callback){
-  fs.readFile('./outlets.txt', 'utf8', function (err, data) {
-    if (err){
-      console.log(err);
-      return;
-    } 
-    //Do your processing, MD5, send a satellite to the moon, etc.
 
-    if(!data || data.length <= 0){
-      rfOutlets = [];
-      return;
-    }
+  var fileName = './outlets.txt';
 
-    rfOutlets = JSON.parse(data);
-    if(callback){
-      callback();
+  fs.exists(fileName, function (exists) {
+    if(exists)
+    {
+      fs.readFile(fileName, 'utf8', function (err, data) {
+        if (err){
+          console.log(err);
+          return;
+        }
+
+        if(!data || data.length <= 0){
+          rfOutlets = [];
+          return;
+        }
+
+        rfOutlets = JSON.parse(data);
+        if(callback){
+          callback();
+        }
+      });
+    } else {
+      fs.writeFile(fileName, "", { flag: 'wx' }, function (err) {
+        if (err) throw err;
+        console.log("It's saved!");
+      });
     }
   });
+
+  
 }
