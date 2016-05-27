@@ -103,6 +103,11 @@ app.delete('/rfoutlet/:name', function(req, res){
   res.send("Deleted " + deletedOutlets + " outlets named " + outletToDelete +".");
 });
 
+app.post('/shutdown', function(req, res){
+  res.send("Shutting down.");
+  var ls = spawn('sudo halt');
+});
+
 var server = app.listen(8081, function () {
 
   var host = server.address().address
@@ -121,8 +126,17 @@ function saveOutlets(){
 
 function readOutlets(callback){
   fs.readFile('./outlets.txt', 'utf8', function (err, data) {
-    if (err) throw err;
+    if (err){
+      console.log(err);
+      return;
+    } 
     //Do your processing, MD5, send a satellite to the moon, etc.
+
+    if(!data || data.length <= 0){
+      rfOutlets = [];
+      return;
+    }
+
     rfOutlets = JSON.parse(data);
     if(callback){
       callback();
