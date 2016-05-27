@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var request = require('request');
 const spawn = require('child_process').spawn;
+const exec = require('child_process').exec;
 var fs = require('fs');
 var secrets = require('./secrets.js');
 
@@ -105,7 +106,14 @@ app.delete('/rfoutlet/:name', function(req, res){
 
 app.post('/shutdown', function(req, res){
   res.send("Shutting down.");
-  var ls = spawn('sudo halt');
+  exec('sudo halt', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
+  });
 });
 
 var server = app.listen(8081, function () {
