@@ -3,12 +3,12 @@ var VIEWS = {
 	IMAGES: "image",
 	SETTINGS: "settings"
 };
-var timeFromClickToPreferdView = 60000;
+var timeFromClickToPreferdView = 6000;
 
 
 var config = (function(){
 	var currentView,
-		preferedView = VIEWS.FRONT;
+		preferedView = VIEWS.IMAGES;
 	return {
 		setCurrentView : function(newView){
 			currentView = newView;

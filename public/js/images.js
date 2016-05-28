@@ -1,7 +1,7 @@
 var imageController = (function(){
 
 	var imageTimeout = null,
-			timeBetweenImages = 30000;
+		timeBetweenImages = 5000;
 	var currentImage = 0,
 			images = [
 				"placeholder/placeholder.jpg"
@@ -9,6 +9,25 @@ var imageController = (function(){
 
 	function init(){
 		_loadImages();
+
+		_bindEvents();
+	}
+
+	function _bindEvents(){
+		var left = document.getElementById("imageLeftController");
+		var right = document.getElementById("imageRightController");
+
+		left.onclick = function(event){
+			document.getElementById("image").src = "./images/"+_getPreviousImage();
+			_startImageTimeout(60000);
+			event.stopPropagation();
+		}
+
+		right.onclick = function(event){
+			document.getElementById("image").src = "./images/"+_getNextImage();
+			_startImageTimeout(60000);
+			event.stopPropagation();
+		}
 	}
 
 	function _loadImages(){
@@ -31,15 +50,27 @@ var imageController = (function(){
 	}
 
 
-	function _startImageTimeout(){
+	function _startImageTimeout(timeToWait){
+		if(!timeToWait || typeof timeToWait !== "number"){
+			timeToWait = timeBetweenImages;
+		}
+
 		clearTimeout(imageTimeout);
 		if(config.getCurrentView() === VIEWS.IMAGES){
 			imageTimeout = setTimeout(function(){
 				console.log("Changing image");
 				document.getElementById("image").src = "./images/"+_getNextImage();
 				_startImageTimeout();
-			}, timeBetweenImages);
+			}, timeToWait);
 		}
+	}
+
+	function _getPreviousImage(){
+		currentImage--;
+		if(currentImage < 0){
+			currentImage = images.length-1;
+		}
+		return images[currentImage];
 	}
 
 	function _getNextImage(){

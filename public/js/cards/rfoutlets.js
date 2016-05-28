@@ -37,7 +37,7 @@ var rfoutlets = (function(){
   }
 
   function _loadOutlets(callback){
-    $.get('/rfoutlet', callback(response));
+    $.get('/rfoutlet', callback);
   }
 
   return {
