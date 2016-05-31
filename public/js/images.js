@@ -1,7 +1,7 @@
 var imageController = (function(){
 
-	var imageTimeout = null,
-		timeBetweenImages = 5000;
+	var imageTimeout = null;
+	
 	var currentImage = 0,
 			images = [
 				"placeholder/placeholder.jpg"
@@ -52,7 +52,7 @@ var imageController = (function(){
 
 	function _startImageTimeout(timeToWait){
 		if(!timeToWait || typeof timeToWait !== "number"){
-			timeToWait = timeBetweenImages;
+			timeToWait = config.getTimeBetweenImages();
 		}
 
 		clearTimeout(imageTimeout);

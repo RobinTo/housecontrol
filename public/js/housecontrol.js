@@ -20,7 +20,7 @@ var frontpage = (function(){
 	}
 
 	function _bindEvents(){
-		var containers = document.getElementsByClassName("containerDiv");
+		var containers = document.getElementsByClassName("clickToFrontPage");
 		for(var i=0; i < containers.length; i++){
 			var container = containers[i];
 			container.addEventListener('click', function(){
@@ -28,8 +28,11 @@ var frontpage = (function(){
 			}, false);
 		}
 
-		document.addEventListener('click', function(){
+		document.addEventListener('mouseup', function(){
 			_onTap();
+		});
+		document.addEventListener('dragend', function(){
+			onTap();
 		});
 	}
 
@@ -41,6 +44,7 @@ var frontpage = (function(){
 	}
 
 	function _onTap(){
+		console.log("Calling on tap");
 		clearTimeout(sleepTimeout);
 		sleepTimeout = setTimeout(function(){
 			switch(config.getPreferedView()){
@@ -56,7 +60,7 @@ var frontpage = (function(){
 				default:
 					imageController.goToImages();
 			}
-		}, timeFromClickToPreferdView);
+		}, config.getTimeFromTapToDefault());
 	}
 
 	return {
