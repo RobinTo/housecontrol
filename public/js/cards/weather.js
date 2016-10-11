@@ -1,7 +1,7 @@
 var weather = (function(){
 
   var weatherTimeout,
-      myCity = "Farsund",
+      myCity = "Lørenskog",
       latestWeatherResponse = {};
 
   function init(){

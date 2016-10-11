@@ -74,18 +74,15 @@ html .containerDiv {
   background: black;
   color: white;
 }
-#frontpage .card#motd {
+#frontpage .card#ruter {
   bottom: 0;
   left: 0;
   background: black;
-  padding: 30px 20px;
   color: white;
+  text-align: left;
 }
-#frontpage .card#motd #motdmessage {
+#frontpage .card#ruter #rutermessage {
   font-size: 20px;
-}
-#frontpage .card#motd #motdAuthor {
-  font-size: 15px;
 }
 #frontpage .card#clock {
   bottom: 0;

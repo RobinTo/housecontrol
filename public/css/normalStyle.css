@@ -76,17 +76,17 @@ html .containerDiv {
   background: -webkit-linear-gradient(top, #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%);
   background: linear-gradient(to bottom, #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%);
 }
-#frontpage .card#motd {
+#frontpage .card#ruter {
   bottom: 0;
   left: 0;
   background: -webkit-linear-gradient(top, #fb83fa 0%, #e93cec 100%);
   background: linear-gradient(to bottom, #fb83fa 0%, #e93cec 100%);
-  padding: 30px 20px;
+  text-align: left;
 }
-#frontpage .card#motd #motdmessage {
+#frontpage .card#ruter #rutermessage {
   font-size: 20px;
 }
-#frontpage .card#motd #motdAuthor {
+#frontpage .card#ruter #ruterAuthor {
   font-size: 15px;
 }
 #frontpage .card#clock {

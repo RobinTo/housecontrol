@@ -4,6 +4,7 @@ var request = require('request');
 const spawn = require('child_process').spawn;
 var fs = require('fs');
 var secrets = require('./secrets.js');
+var xml = require('xml');
 
 var rfOutlets = [];
 
@@ -14,6 +15,17 @@ app.use('/static', express.static('public'));
 app.get('/', function (req, res) {
    res.send('Hello World');
 })
+
+app.get('/ruter', function(req, res){
+  request.get("http://reisapi.ruter.no/StopVisit/GetDepartures/2300438", function(err, response, body){
+    if(!err && response.statusCode === 200){
+      var ruterReiser = JSON.parse(body);
+      res.json(ruterReiser);
+    } else {
+      res.json({error: "Kunne ikke hente ruter reiser"});
+    }
+  });
+});
 
 app.get('/imagelist', function(req, res){
 	fs.readdir("./public/images/", function(err, files){
@@ -39,11 +51,11 @@ app.get('/weather', function(req, res){
   });
 });
 
-app.get('/motd', function(req, res){
-  request.get('http://robint.pythonanywhere.com/api/motd/', function(err, response, body){
+app.get('/ruter', function(req, res){
+  request.get('http://robint.pythonanywhere.com/api/ruter/', function(err, response, body){
     if(!err && response.statusCode === 200){
-      var motd = JSON.parse(body);
-      res.json(motd);
+      var ruter = JSON.parse(body);
+      res.json(ruter);
     } else {
       res.json({error: "Kunne ikke hente melding."});
     }

@@ -8,7 +8,7 @@ var frontpage = (function(){
 
 		weather.init(); // Weather card.
 		inside.init(); // Inside climate card.
-		motd.init();		// Motd card.
+		ruter.init();		// ruter card.
 		clock.init();		// Clock card.
 		clock.init();
 		settings.init();
@@ -43,6 +43,12 @@ var frontpage = (function(){
 	function _onTap(){
 		clearTimeout(sleepTimeout);
 		sleepTimeout = setTimeout(function(){
+
+			if(config.getCurrentView() === VIEWS.SETTINGS){
+				// If we are currently in settings don't interrupt by going back to front page.
+				return;
+			}
+
 			switch(config.getPreferedView()){
 				case VIEWS.FRONT:
 					_goToHousecontrol();

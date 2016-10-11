@@ -6,13 +6,16 @@
   "scripts": {
     "lessNormal": "lessc public/css/normal/normal.less public/css/normalStyle.css",
     "lessDark": "lessc public/css/dark/dark.less public/css/darkStyle.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4",
-    "request": "^2.72.0"
+    "express": "^4.14.0",
+    "less": "^2.7.1",
+    "request": "^2.75.0",
+    "xml": "^1.0.1"
   },
   "devDependencies": {
     "less": "^2.6.1"

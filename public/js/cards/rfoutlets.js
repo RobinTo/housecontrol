@@ -24,7 +24,7 @@ var rfoutlets = (function(){
     _loadOutlets(function(response){
       outlets = response;
       console.log(outlets);
-    
+
       _renderOutlets($card);
     });
   }
@@ -37,7 +37,7 @@ var rfoutlets = (function(){
   }
 
   function _loadOutlets(callback){
-    $.get('/rfoutlet', callback(response));
+    $.get('/rfoutlet', callback);
   }
 
   return {
@@ -54,7 +54,7 @@ var rfoutlets = (function(){
       });
     },
     removeOutlet : function(name){
-      
+
       $.delete('/rfoutlet/'+name).done(function(){
         _loadOutlets(function(response){
           outlets = response;
