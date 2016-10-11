@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var request = require('request');
 const spawn = require('child_process').spawn;
+const exec = require('child_process').exec;
 var fs = require('fs');
 var secrets = require('./secrets.js');
 var xml = require('xml');
@@ -115,6 +116,18 @@ app.delete('/rfoutlet/:name', function(req, res){
   res.send("Deleted " + deletedOutlets + " outlets named " + outletToDelete +".");
 });
 
+app.post('/shutdown', function(req, res){
+  res.send("Shutting down.");
+  exec('sudo halt', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
+  });
+});
+
 var server = app.listen(8081, function () {
 
   var host = server.address().address
@@ -132,12 +145,35 @@ function saveOutlets(){
 }
 
 function readOutlets(callback){
-  fs.readFile('./outlets.txt', 'utf8', function (err, data) {
-    if (err) throw err;
-    //Do your processing, MD5, send a satellite to the moon, etc.
-    rfOutlets = JSON.parse(data);
-    if(callback){
-      callback();
+
+  var fileName = './outlets.txt';
+
+  fs.exists(fileName, function (exists) {
+    if(exists)
+    {
+      fs.readFile(fileName, 'utf8', function (err, data) {
+        if (err){
+          console.log(err);
+          return;
+        }
+
+        if(!data || data.length <= 0){
+          rfOutlets = [];
+          return;
+        }
+
+        rfOutlets = JSON.parse(data);
+        if(callback){
+          callback();
+        }
+      });
+    } else {
+      fs.writeFile(fileName, "", { flag: 'wx' }, function (err) {
+        if (err) throw err;
+        console.log("It's saved!");
+      });
     }
   });
+
+  
 }

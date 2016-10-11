@@ -1,11 +1,10 @@
 var weather = (function(){
 
   var weatherTimeout,
-      myCity = "Lørenskog",
       latestWeatherResponse = {};
 
   function init(){
-    _getWeather(myCity);
+    _getWeather(config.getMyCity());
   }
 
   function _getWeather(city){
@@ -46,7 +45,7 @@ var weather = (function(){
 		});
     // Set timeout to retrieve weather again in one hour.
     weatherTimeout = setTimeout(function(){
-      getWeather(city);
+      getWeather(config.getMyCity());
     }, 3600000); // 60*60*1000
 	}
 

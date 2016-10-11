@@ -82,12 +82,30 @@ html .containerDiv {
   background: -webkit-linear-gradient(top, #fb83fa 0%, #e93cec 100%);
   background: linear-gradient(to bottom, #fb83fa 0%, #e93cec 100%);
   text-align: left;
+  padding: 8px;
 }
 #frontpage .card#ruter #rutermessage {
-  font-size: 20px;
+  font-size: 18px;
 }
-#frontpage .card#ruter #ruterAuthor {
-  font-size: 15px;
+#frontpage .card#ruter #ruterList {
+  line-height: 30px;
+}
+#frontpage .card#ruter #ruterList .time {
+  float: right;
+  display: inline-block;
+  min-width: 30%;
+  max-width: 35%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#frontpage .card#ruter #ruterList .name {
+  float: left;
+  display: inline-block;
+  max-width: 60%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #frontpage .card#clock {
   bottom: 0;
@@ -118,4 +136,20 @@ html .containerDiv {
 #imagediv img {
   max-height: 100%;
   max-width: 100%;
+}
+#imagediv #imageRightController {
+  position: fixed;
+  left: 0;
+  width: 100px;
+  top: 0;
+  bottom: 0;
+  display: block;
+}
+#imagediv #imageLeftController {
+  position: fixed;
+  right: 0;
+  width: 100px;
+  top: 0;
+  bottom: 0;
+  display: block;
 }

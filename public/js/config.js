@@ -3,12 +3,16 @@ var VIEWS = {
 	IMAGES: "image",
 	SETTINGS: "settings"
 };
-var timeFromClickToPreferdView = 60000;
 
 
 var config = (function(){
 	var currentView,
 		preferedView = VIEWS.FRONT;
+
+	var timeFromTapToDefault = 6000,
+	  	myCity = "Lørenskog",
+	  	timeBetweenImages = 5000;
+
 	return {
 		setCurrentView : function(newView){
 			currentView = newView;
@@ -21,6 +25,24 @@ var config = (function(){
 		},
 		getPreferedView : function(){
 			return preferedView;
+		},
+		setTimeBetweenImages : function(newTime){
+			timeBetweenImages = newTime;
+		},
+		getTimeBetweenImages : function(){
+			return timeBetweenImages;
+		},
+		setMyCity : function(newCity){
+			myCity = new City;
+		},
+		getMyCity : function(){
+			return myCity;
+		},
+		getTimeFromTapToDefault : function(){
+			return timeFromTapToDefault;
+		},
+		setTimeFromTapToDefault : function(newTime){
+			timeFromTapToDefault = newTime;
 		}
 	}
 })();

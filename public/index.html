@@ -11,9 +11,11 @@
 	<script src="./js/cards/rfoutlets.js"></script>
 	<script src="./js/cards/settings.js"></script>
 	<script src="./js/cards/weather.js"></script>
+	<script src="./js/settingscontroller.js"></script>
 	<script src="./js/housecontrol.js"></script>
 	<link rel="stylesheet" type="text/css" href="./resources/weathericons/css/weather-icons.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/normalStyle.css" id="theme_css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div id="frontpage" class="containerDiv">
@@ -62,11 +64,17 @@
 </div>
 
 
-<div id="imagediv" class="containerDiv">
+<div id="imagediv" class="containerDiv clickToFrontPage">
+	<div id="imageLeftController"></div>
 	<img id="image" class="displayImage" src="./images/placeholder/placeholder.jpg" />
+	<div id="imageRightController"></div>
 </div>
 
 <div id="settingsdiv" class="containerDiv">
+<div>Settings page</div>
+
+<input id="timeBetweenImages" type="range" min="1" max="360" step="10" />
+
 </div>
 </body>
 

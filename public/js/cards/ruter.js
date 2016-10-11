@@ -6,6 +6,13 @@ var ruter = (function(){
     _getRuter();
   }
 
+  function _formatTimeNumber(number){
+    if(parseInt(number) < 10){
+      hours = "0"+hours;
+    }
+    return number;
+  }
+
   function _getRuter(){
     console.log("Henter ruter fra Skåreråsen");
     clearTimeout(ruterTimer);
@@ -20,17 +27,29 @@ var ruter = (function(){
       document.getElementById("ruterMessage").innerHtml = "Avganger fra Skåreråsen";
       var ruterList = document.getElementById("ruterList");
       ruterList.innerText = "";
-      for(var i = 0; i < ruterObject.length; i++){
+      for(var i = 0; i < ruterObject.length && i < 6; i++){
         var r = ruterObject[i],
             monitor = r.MonitoredVehicleJourney.MonitoredCall;
 
-        var newDiv = document.createElement("div");
+        var timeDiv = document.createElement("div"),
+            locDiv = document.createElement("div");
+
+        timeDiv.className = "time";
+        locDiv.className = "name";
 
         var dateString = ((new Date(monitor.ExpectedArrivalTime).getTime() - new Date().getTime())/1000/60).toFixed(0);
 
-        var textString = r.MonitoredVehicleJourney.DestinationName + " om " + dateString + " min";
-        newDiv.appendChild(document.createTextNode(textString));
-        ruterList.appendChild(newDiv);
+        if(dateString === "0"){
+          dateString = "nå";
+        } else if(parseInt(dateString) >= 15){
+          dateString = _formatTimeNumber(new Date(monitor.ExpectedArrivalTime).getHours()) +":"+_formatTimeNumber(new Date(monitor.ExpectedArrivalTime).getMinutes());
+        }else {
+          dateString += " min"
+        }
+        locDiv.appendChild(document.createTextNode(r.MonitoredVehicleJourney.DestinationName))
+        timeDiv.appendChild(document.createTextNode(dateString));
+        ruterList.appendChild(locDiv)
+        ruterList.appendChild(timeDiv);
       }
     });
     setTimeout(_getRuter, 15000); // Check again in 30 seconds.
