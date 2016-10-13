@@ -1,7 +1,7 @@
 var imageController = (function(){
 
 	var imageTimeout = null;
-	
+
 	var currentImage = 0,
 			images = [
 				"placeholder/placeholder.jpg"

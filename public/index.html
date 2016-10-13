@@ -71,10 +71,17 @@
 </div>
 
 <div id="settingsdiv" class="containerDiv">
-<div>Settings page</div>
+	<div>Settings page</div>
 
-<input id="timeBetweenImages" type="range" min="1" max="360" step="10" />
-
+	<div id="sliders">
+		<div id="sliders-images">
+			<div class="settings-title">
+				Bildevisning
+			</div>
+			<input id="timeBetweenImages" type="range" value="300" min="0" max="3600" step="60" /><br />
+		</div>
+	</div>
+	<button id="done">Ferdig</button>
 </div>
 </body>
 

@@ -3,8 +3,9 @@ var frontpage = (function(){
 	var sleepTimeout = null; // The timeout used to wait for going to view, reset each time in document click listener.
 
 	function init(){
-		_goToHousecontrol();
+		goToHousecontrol();
 		imageController.init();
+		settingsController.init();
 
 		weather.init(); // Weather card.
 		inside.init(); // Inside climate card.
@@ -24,7 +25,7 @@ var frontpage = (function(){
 		for(var i=0; i < containers.length; i++){
 			var container = containers[i];
 			container.addEventListener('click', function(){
-				_goToHousecontrol();
+				goToHousecontrol();
 			}, false);
 		}
 
@@ -36,7 +37,7 @@ var frontpage = (function(){
 		});
 	}
 
-	function _goToHousecontrol(){
+	function goToHousecontrol(){
 		document.getElementById("imagediv").style.display = "none";
 		document.getElementById("settingsdiv").style.display = "none";
 		document.getElementById("frontpage").style.display = "block";
@@ -55,7 +56,7 @@ var frontpage = (function(){
 
 			switch(config.getPreferedView()){
 				case VIEWS.FRONT:
-					_goToHousecontrol();
+					goToHousecontrol();
 					break;
 				case VIEWS.IMAGES:
 					imageController.goToImages();
@@ -70,7 +71,8 @@ var frontpage = (function(){
 	}
 
 	return {
-		init: init
+		init: init,
+		goToHousecontrol: goToHousecontrol
 	}
 })();
 

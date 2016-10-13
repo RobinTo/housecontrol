@@ -8,7 +8,7 @@ var ruter = (function(){
 
   function _formatTimeNumber(number){
     if(parseInt(number) < 10){
-      hours = "0"+hours;
+      number = "0"+number;
     }
     return number;
   }
