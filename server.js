@@ -72,20 +72,15 @@ app.get('/rfoutlet', function(req, res){
 });
 
 app.post('/rfoutlet/:code', function(req, res){
-  // Trigger a post rf code req.code
-  var ls = spawn('node', ['-v']);
-
-	ls.stdout.on('data', (data) => {
-	  console.log(`stdout: ${data}`);
-	});
-
-	ls.stderr.on('data', (data) => {
-	  console.log(`stderr: ${data}`);
-	});
-
-	ls.on('close', (code) => {
-	  console.log(`child process exited with code ${code}`);
-	});
+  res.send("Shutting down.");
+  exec('sudo /var/www/rfoutlet/codesend '+req.params.code, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
+  });
 });
 
 app.put('/rfoutlet/:name/:on/:off/:toggle', function(req, res){
@@ -175,5 +170,5 @@ function readOutlets(callback){
     }
   });
 
-  
+
 }

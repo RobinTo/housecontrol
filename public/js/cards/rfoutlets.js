@@ -10,9 +10,9 @@ var outlet = function(name, onCode, offCode, toggleCode){
 
 var rfoutlets = (function(){
   var outlets = [
-    outlet("Outlet one", 1561, 1621, null),
-    outlet("Outlet two", 1561, 1621, null),
-    outlet("Outlet three", 1561, 1621, null),
+    outlet("Outlet one", 1381717, 1381716, null),
+    outlet("Outlet two", 1394005, 1394004, null),
+    outlet("Outlet three", 1397077, 1397076, null),
   ];
 
   var $card;
@@ -21,18 +21,25 @@ var rfoutlets = (function(){
     // This should control the rf outlet switches.
     $card = $('#outletControls');
 
+    _renderOutlets($card);
+    /*
     _loadOutlets(function(response){
       outlets = response;
       console.log(outlets);
 
-      _renderOutlets($card);
-    });
+    });*/
   }
 
   function _renderOutlets($card){
     $card.empty();
     for(var i = 0; i < outlets.length; i++){
-      $card.append('<div>' + outlets[i].name + '</div>');
+      var $outlet = $('<div id="outlet'+i+'" class="outlet"></div>');
+      $outlet.append('<div class="toggle" data="'+outlets[i].onCode+'">On</div>');
+      $outlet.append('<div class="toggle" data="'+outlets[i].offCode+'">Off</div>');
+      $outlet.find('.toggle').on('click', function(e){
+        $.post('/rfoutlet/'+$(e.target).attr('data'));
+      });
+      $card.append($outlet);
     }
   }
 

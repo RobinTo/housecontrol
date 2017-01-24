@@ -76,6 +76,18 @@ html .containerDiv {
   background: -webkit-linear-gradient(top, #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%);
   background: linear-gradient(to bottom, #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%);
 }
+#frontpage .card#outletControls .outlet {
+  width: 100%;
+  height: 20%;
+}
+#frontpage .card#outletControls .outlet .toggle {
+  width: 50%;
+  display: inline-block;
+  border: 1px solid black;
+  box-sizing: border-box;
+  height: 100%;
+  line-height: 45px;
+}
 #frontpage .card#ruter {
   bottom: 0;
   left: 0;

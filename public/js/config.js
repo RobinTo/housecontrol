@@ -101,7 +101,7 @@ var weatherCodeToDesc = {
 	800: "Klart vær",
 	801: "Lett skyet",
 	802: "Spredte skyer",
-	803: "Lett overkyet",
+	803: "Lett overskyet",
 	804: "Overskyet",
 	900: "Tornado?!",
 	901: "Tropisk storm?!",
